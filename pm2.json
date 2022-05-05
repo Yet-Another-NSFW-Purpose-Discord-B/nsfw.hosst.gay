@@ -1,0 +1,11 @@
+{
+    "apps": [
+      {
+        "name":"nsfw_cdn",
+        "script":"server.py",
+        "interpreter" : "python3",
+        "interpreter_args": "-u"
+      }
+    ]
+  }
+  
