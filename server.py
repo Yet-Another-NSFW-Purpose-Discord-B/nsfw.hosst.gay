@@ -10,8 +10,8 @@ app = Quart(__name__)
 
 @app.route("/")
 async def home():
-    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
-    image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
+    folder = random.choice(['helltakerpics', 'hentai'])
+    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/{folder}"))
     raw_image = url_for('sendfile',filename=choice)
     print(raw_image)
     return await render_template('index.html', host=request.host, raw=raw_image)
