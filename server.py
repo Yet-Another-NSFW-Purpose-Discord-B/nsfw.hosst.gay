@@ -1,3 +1,6 @@
+import secrets
+import aiohttp
+import aiofiles
 from quart import Quart, jsonify, send_from_directory, url_for, request, render_template
 import random
 import os
@@ -9,7 +12,7 @@ async def home():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
     raw_image = url_for('sendfile',filename=choice)
-    
+    print(raw_image)
     return await render_template('index.html', host=request.host, raw=raw_image)
 
     
