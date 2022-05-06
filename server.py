@@ -1,3 +1,4 @@
+import pathlib
 import secrets
 import aiohttp
 import aiofiles
@@ -20,10 +21,13 @@ async def home():
 
 @app.route('/imgs/<filename>')
 async def sendfile(filename=None):
-    dir = "/root/yanpdb/nsfw_cdn/images/helltakerpics"
-    image = os.path.join(dir, filename)
+    dir = "/root/yanpdb/nsfw_cdn/"
+    p = pathlib.Path(dir)
+
+    for f in p.rglob(filename):
+        print(str(f.parent))
     
-    return await send_from_directory(dir,filename)
+    return await send_from_directory(str(f.parent),filename)
 
 
 @app.route('/helltaker')
@@ -33,6 +37,12 @@ async def helltaker():
     raw_image = url_for('sendfile',filename=choice)
     return jsonify(url=f"https://{request.host}{raw_image}")
 
+@app.route('/hentai')
+async def hentai():
+    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/hentai"))
+    image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
+    raw_image = url_for('sendfile',filename=choice)
+    return jsonify(url=f"https://{request.host}{raw_image}")
 
 
 app.run(debug=True, port=2030)
