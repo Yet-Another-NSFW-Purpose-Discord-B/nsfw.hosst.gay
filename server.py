@@ -30,14 +30,14 @@ async def sendfile(filename=None):
     return await send_from_directory(str(f.parent),filename)
 
 
-@app.route('/helltaker')
+@app.route('/api/v1/helltaker')
 async def helltaker():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
     raw_image = url_for('sendfile',filename=choice)
     return jsonify(url=f"https://{request.host}{raw_image}")
 
-@app.route('/hentai')
+@app.route('/api/v1/hentai')
 async def hentai():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/hentai"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
