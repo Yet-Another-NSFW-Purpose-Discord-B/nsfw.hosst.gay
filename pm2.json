@@ -3,6 +3,7 @@
       {
         "name":"nsfw_cdn",
         "script":"server.py",
+        "args":" waitress-serve --call 'flaskr:create_app'",
         "interpreter" : "python3",
         "interpreter_args": "-u"
       }
