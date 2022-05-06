@@ -16,7 +16,9 @@ async def home():
     print(raw_image)
     return await render_template('index.html', host=request.host, raw=raw_image)
 
-    
+@app.route('/endpoints')
+async def endpoints():
+    return await render_template('endpoints.html')   
 
 
 @app.route('/api/v1/helltaker')
