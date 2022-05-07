@@ -55,7 +55,12 @@ async def neko():
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}")
 
-
+@app.route("/api/v1/tomboy")
+async def tomboy():
+    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/tomboy"))
+    image = os.path.join("/root/yanpdb/nsfw_cdn/images/tomboy", choice)
+    raw_image = f"https://i.thino.pics/{choice}"
+    return jsonify(url=f"{raw_image}")
 
 
 app.run(debug=True, port=2030)
