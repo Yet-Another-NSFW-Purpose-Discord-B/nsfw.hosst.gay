@@ -1,3 +1,4 @@
+import logging
 import pathlib
 import secrets
 import aiohttp
@@ -6,8 +7,17 @@ from quart import Quart, jsonify, send_from_directory, url_for, request, render_
 import random
 import os
 import quart.flask_patch    
+
+
+
+
 app = Quart(__name__)
 from swagger_ui import quart_api_doc
+logger = logging.getLogger('thino.pics')
+fh = logging.FileHandler('thino.pics.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
+logger.setLevel(logging.DEBUG)
 
 quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API doc')
 
@@ -27,9 +37,8 @@ async def home():
             raw_image = data['image']
 
 
-            print(endpoint)
-
-            print(raw_image)
+            logger.debug(endpoint)
+            logger.debug(raw_image)
             return await render_template('index.html', host=request.host, raw=raw_image, endpoint=endpoint)
 
 
