@@ -43,5 +43,8 @@
                     "200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url:  '  https://i.thino.pics/qg69b98mogk81.jpg'"}}}}
                 }
             }
+        },
+        "/api/v1/tomboy": {
+            "get":{"tags":["NSFW"],"summary":"Gives you tomboy images","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"ur;: 'https://i.thino.pics/4nh1dtzfmwt81.jpg'"}}}}}}
         }
     }}

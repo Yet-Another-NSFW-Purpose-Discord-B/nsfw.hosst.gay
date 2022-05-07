@@ -15,7 +15,7 @@ quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API do
 
 @app.route("/")
 async def home():
-    folder = random.choice(['helltakerpics', 'hentai'])
+    folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy'])
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/{folder}"))
     
 
