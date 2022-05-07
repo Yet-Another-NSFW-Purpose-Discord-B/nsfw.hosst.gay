@@ -17,6 +17,7 @@ quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API do
 async def home():
     folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy'])
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/{folder}"))
+    print(choice)
     
 
     async with aiohttp.ClientSession() as session:
@@ -24,6 +25,7 @@ async def home():
             data = await res.json()
             endpoint = data['url']
             raw_image = data['image']
+
 
             print(endpoint)
 
@@ -57,10 +59,12 @@ async def neko():
 
 @app.route("/api/v1/tomboy")
 async def tomboy():
-    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/tomboy"))
-    image = os.path.join("/root/yanpdb/nsfw_cdn/images/tomboy", choice)
+    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/tomboy"))
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}")
 
+@app.route('/check', methods=['POST'])
+async def uptime_check():
+    return "Checked!"
 
 app.run(debug=True, port=2030)
