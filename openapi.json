@@ -34,5 +34,14 @@
                         }
                     }
                 }
+        },
+        "/api/v1/neko": {
+            "get":{
+                "tags":["NSFW"],
+                "summary":"Gives you neko type images",
+                "responses":{
+                    "200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url:  '  https://i.thino.pics/qg69b98mogk81.jpg'"}}}}
+                }
+            }
         }
     }}

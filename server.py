@@ -5,19 +5,31 @@ import aiofiles
 from quart import Quart, jsonify, send_from_directory, url_for, request, render_template
 import random
 import os
-
+import quart.flask_patch    
 app = Quart(__name__)
 from swagger_ui import quart_api_doc
 
 quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API doc')
 
+
+
 @app.route("/")
 async def home():
     folder = random.choice(['helltakerpics', 'hentai'])
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/{folder}"))
-    raw_image = f"https://i.thino.pics/{choice}"
-    print(raw_image)
-    return await render_template('index.html', host=request.host, raw=raw_image)
+    
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f"https://i.thino.pics/search/{choice}") as res:
+            data = await res.json()
+            endpoint = data['url']
+            raw_image = data['image']
+
+            print(endpoint)
+
+            print(raw_image)
+            return await render_template('index.html', host=request.host, raw=raw_image, endpoint=endpoint)
+
 
 
 
@@ -35,6 +47,15 @@ async def hentai():
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}")
+
+@app.route("/api/v1/neko")
+async def neko():
+    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/neko"))
+    image = os.path.join("/root/yanpdb/nsfw_cdn/images/neko", choice)
+    raw_image = f"https://i.thino.pics/{choice}"
+    return jsonify(url=f"{raw_image}")
+
+
 
 
 app.run(debug=True, port=2030)
