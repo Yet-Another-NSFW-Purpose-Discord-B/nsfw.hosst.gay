@@ -50,33 +50,33 @@ async def helltaker():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", status=200)
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route('/api/v1/hentai')
 async def hentai():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/hentai"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", status=200)
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/neko")
 async def neko():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/neko"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/neko", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", status=200)
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/tomboy")
 async def tomboy():
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/tomboy"))
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", status=200)
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/femboy")
 async def femboy():
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/femboy"))
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", status=200)
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 
 @app.route('/check', methods=['POST']) #this route is made to be checked with stuff like uptime kuma and other stuff 
