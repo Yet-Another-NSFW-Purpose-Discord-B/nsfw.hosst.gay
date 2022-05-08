@@ -14,7 +14,7 @@ import quart.flask_patch
 app = Quart(__name__)
 from swagger_ui import quart_api_doc
 logger = logging.getLogger('thino.pics')
-fh = logging.FileHandler('thino.pics.log')
+fh = logging.FileHandler('logs/home.log')
 fh.setLevel(logging.DEBUG)
 logger.addHandler(fh)
 logger.setLevel(logging.DEBUG)
@@ -50,29 +50,36 @@ async def helltaker():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}")
+    return jsonify(url=f"{raw_image}", status=200)
 
 @app.route('/api/v1/hentai')
 async def hentai():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/hentai"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}")
+    return jsonify(url=f"{raw_image}", status=200)
 
 @app.route("/api/v1/neko")
 async def neko():
     choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/neko"))
     image = os.path.join("/root/yanpdb/nsfw_cdn/images/neko", choice)
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}")
+    return jsonify(url=f"{raw_image}", status=200)
 
 @app.route("/api/v1/tomboy")
 async def tomboy():
     choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/tomboy"))
     raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}")
+    return jsonify(url=f"{raw_image}", status=200)
 
-@app.route('/check', methods=['POST'])
+@app.route("/api/v1/femboy")
+async def femboy():
+    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/femboy"))
+    raw_image = f"https://i.thino.pics/{choice}"
+    return jsonify(url=f"{raw_image}", status=200)
+
+
+@app.route('/check', methods=['POST']) #this route is made to be checked with stuff like uptime kuma and other stuff 
 async def uptime_check():
     return "Checked!"
 
