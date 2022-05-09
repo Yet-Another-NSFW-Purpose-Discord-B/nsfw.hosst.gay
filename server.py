@@ -25,8 +25,8 @@ quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API do
 
 @app.route("/")
 async def home():
-    folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy'])
-    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/{folder}"))
+    folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy', 'thighs'])
+    choice = random.choice(os.listdir(f"/mnt/volume_nyc1_02/images/{folder}"))
     print(choice)
     
 
@@ -35,11 +35,13 @@ async def home():
             data = await res.json()
             endpoint = data['url']
             raw_image = data['image']
+            filename = data['filename']
 
 
             logger.debug(endpoint)
             logger.debug(raw_image)
-            return await render_template('index.html', host=request.host, raw=raw_image, endpoint=endpoint)
+            logger.debug(filename)
+            return await render_template('index.html', host=request.host, raw=raw_image, endpoint=endpoint, filename=filename)
 
 
 
@@ -47,34 +49,40 @@ async def home():
 
 @app.route('/api/v1/helltaker')
 async def helltaker():
-    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/helltakerpics"))
-    image = os.path.join("/root/yanpdb/nsfw_cdn/images/helltakerpics", choice)
+    choice = random.choice(os.listdir("/mnt/volume_nyc1_02/images/helltakerpics"))
+    image = os.path.join("/mnt/volume_nyc1_02/images/helltakerpics", choice)
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route('/api/v1/hentai')
 async def hentai():
-    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/hentai"))
-    image = os.path.join("/root/yanpdb/nsfw_cdn/images/hentai", choice)
+    choice = random.choice(os.listdir("/mnt/volume_nyc1_02/images/hentai"))
+    image = os.path.join("/mnt/volume_nyc1_02/images/hentai", choice)
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/neko")
 async def neko():
-    choice = random.choice(os.listdir("/root/yanpdb/nsfw_cdn/images/neko"))
-    image = os.path.join("/root/yanpdb/nsfw_cdn/images/neko", choice)
+    choice = random.choice(os.listdir("/mnt/volume_nyc1_02/images/neko"))
+    image = os.path.join("/mnt/volume_nyc1_02/images/neko", choice)
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/tomboy")
 async def tomboy():
-    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/tomboy"))
+    choice = random.choice(os.listdir(f"/mnt/volume_nyc1_02/images/tomboy"))
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", filename=choice, status=200)
 
 @app.route("/api/v1/femboy")
 async def femboy():
-    choice = random.choice(os.listdir(f"/root/yanpdb/nsfw_cdn/images/femboy"))
+    choice = random.choice(os.listdir(f"/mnt/volume_nyc1_02/images/femboy"))
+    raw_image = f"https://i.thino.pics/{choice}"
+    return jsonify(url=f"{raw_image}", filename=choice, status=200)
+
+@app.route("/api/v1/thighs")
+async def thighs():
+    choice = random.choice(os.listdir(f"/mnt/volume_nyc1_02/images/thighs"))
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", filename=choice, status=200)
 

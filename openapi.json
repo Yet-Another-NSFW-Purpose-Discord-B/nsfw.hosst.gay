@@ -45,6 +45,12 @@
             }
         },
         "/api/v1/tomboy": {
-            "get":{"tags":["NSFW"],"summary":"Gives you tomboy images","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"ur;: 'https://i.thino.pics/4nh1dtzfmwt81.jpg'"}}}}}}
+            "get":{"tags":["NSFW"],"summary":"Gives you tomboy images","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/4nh1dtzfmwt81.jpg'"}}}}}}
+        },
+        "/api/v1/thighs": {
+            "get":{"tags":["NSFW"],"summary":"Gives you THICCC thigh pics   ","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/BRkYjJ9PvfAEr2hiMnkYBhRT-6huVBQ-Vib0ctCye54.jpg'"}}}}}}
+        },
+        "/api/v1/femboy": {
+            "get":{"tags":["NSFW"],"summary":"Gives you weird ass femboy/trap pics","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/p3i02ii092m81.jpg'"}}}}}}
         }
     }}
