@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background: #36393f;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        
+        body {}
+
+        h1 {
+            color: #ce513b;
+        }
+
+        p {
+            text-shadow: coral;
+            color:rgb(236, 20, 20);
+        }
+
+        h2 {
+            font-size: large;
+            color:#ce513b;
+        }
+
+        .aligned {
+        }
+          
+        span {
+            padding: 10px;
+            color:burlywood;
+        }
+
+
+.top-bar {
+    display: flex;
+    height: 5vh;
+    width: 75%;
+    background-color:#647eb3;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.topLinks, .topLinks:link, .topLinks:visited, .topLinks:focus, .topLinks:hover, .topLinks:active {
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+.topLinks {
+    font-size:160%;
+
+}
+
+.topLinks:hover {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color:darkgrey;
+
+}
+</style>
+</head>
+<body>
+    <center>
+        <h1 style="text-shadow: 2x 2x 2x black; color:#af812c; font-size:medium">The file name for this image is:<br><a style="color:#c7902a" href="{{raw}}">{{filename}}</a></h1>
+    
+        <br>
+        
+        <img src="{{raw}}" height="640", style="box-shadow: 0px 0px 9px 5px #ff5f00;border-radius: 40px;border: 6px solid #ff5f00;">
+
+        <br>
+        
+    </center>
+</body>
+</html>
