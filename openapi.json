@@ -1,0 +1,56 @@
+{
+    "openapi":"3.0.1",
+    "info":{
+        "title":"thino.pics",
+        "description":"The api docs for thino.pics",
+        "version":"1.0.0"
+    },
+    "servers":[{"url":"https://thino.pics/"}],
+    "paths":{
+        "/api/v1/helltaker":{
+            "get":{
+                "tags":["NSFW"],
+                "summary":"Gives you NSFW helltaker images",
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "content":{
+                            "application/json":{"schema":{"example":"url:  'https://i.thino.pics/7k787mxj13b61.jpg'"}}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/hentai":{
+                "get":{
+                    "tags":["NSFW"],
+                    "summary":"Gives you hentai/rule34 images",
+                    "responses":{
+                        "200":{
+                            "description":"OK",
+                            "content":{
+                                "application/json":{"schema":{"example":"url:  'https://i.thino.pics/mp1soseb5hx81.jpg'"}}
+                            }
+                        }
+                    }
+                }
+        },
+        "/api/v1/neko": {
+            "get":{
+                "tags":["NSFW"],
+                "summary":"Gives you neko type images",
+                "responses":{
+                    "200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url:  '  https://i.thino.pics/qg69b98mogk81.jpg'"}}}}
+                }
+            }
+        },
+        "/api/v1/tomboy": {
+            "get":{"tags":["NSFW"],"summary":"Gives you tomboy images","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/4nh1dtzfmwt81.jpg'"}}}}}}
+        },
+        "/api/v1/thighs": {
+            "get":{"tags":["NSFW"],"summary":"Gives you THICCC thigh pics   ","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/BRkYjJ9PvfAEr2hiMnkYBhRT-6huVBQ-Vib0ctCye54.jpg'"}}}}}}
+        },
+        "/api/v1/femboy": {
+            "get":{"tags":["NSFW"],"summary":"Gives you weird ass femboy/trap pics","responses":{"200":{"description":"OK", "content":{"application/json":{"schema":{"example":"url: 'https://i.thino.pics/p3i02ii092m81.jpg'"}}}}}}
+        }
+    }}
