@@ -174,11 +174,6 @@ async def porn():
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", endpoint="https://thino.pics/api/v1/porn",filename=choice, status=200)
 
-@app.route('/api/v1/feet')
-async def feet(): #:vomit:
-    choice = random.choice(os.listdir("/mnt/volume_nyc1_02/images/feet"))
-    raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", endpoint="https://thino.pics/api/v1/feet",filename=choice, status=200)
 
 
 @app.route('/check', methods=['POST']) #this route is made to be checked with stuff like uptime kuma and other stuff 
