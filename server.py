@@ -7,7 +7,9 @@ from quart import Quart, jsonify, send_from_directory, url_for, request, render_
 import random
 import os
 import quart.flask_patch  
+
 import thino
+
 
 app = Quart(__name__)
 from swagger_ui import quart_api_doc
@@ -21,58 +23,61 @@ quart_api_doc(app, config_path="openapi.json", url_prefix='/docs', title='API do
 
 @app.route("/search/<filename>")
 async def search(filename):
-    dir = "/mnt/volume_nyc1_02/images/"
-    p = pathlib.Path(dir)
+    try:
+        dir = "/mnt/volume_nyc1_02/images/"
+        p = pathlib.Path(dir)
 
+        for f in p.rglob(filename):
+            print(str(f.parent))
+            
+        
 
-    for f in p.rglob(filename):
-        print(str(f.parent))
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/hentai"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/hentai", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/hentai"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/hentai", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/helltakerpics"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/helltaker", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/helltakerpics"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/helltaker", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/neko"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/neko", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/neko"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/neko", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/tomboy"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/tomboy", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/tomboy"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/tomboy", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/femboy"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/femboy", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/femboy"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/femboy", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
-    
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/thighs"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/thighs", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/thighs"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/thighs", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/dildo"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/dildo", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/dildo"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/dildo", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
 
-    if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/porn"):
-        print(filename)
-        print(str(f.parent))
-        return jsonify(url="https://thino.pics/api/v1/porn", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
-
+        if f.parent == pathlib.Path("/mnt/volume_nyc1_02/images/porn"):
+            print(filename)
+            print(str(f.parent))
+            return jsonify(url="https://thino.pics/api/v1/porn", image=f"https://i.thino.pics/{filename}", dir=f"{str(os.path.join(f.parent, filename))}", status=200, filename=filename)
+    except NameError:
+        return jsonify(err="No image found!")
 
 @app.route("/")
 async def home():
 
-    folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy', 'thighs', 'porn', 'dildo'])
+    folder = random.choice(['helltakerpics', 'hentai', 'neko', 'tomboy', 'thighs'])
     choice = random.choice(os.listdir(f"/mnt/volume_nyc1_02/images/{folder}"))
     
 
@@ -174,15 +179,11 @@ async def porn():
     raw_image = f"https://i.thino.pics/{choice}"
     return jsonify(url=f"{raw_image}", endpoint="https://thino.pics/api/v1/porn",filename=choice, status=200)
 
-@app.route('/api/v1/feet')
-async def feet(): #:vomit:
-    choice = random.choice(os.listdir("/mnt/volume_nyc1_02/images/feet"))
-    raw_image = f"https://i.thino.pics/{choice}"
-    return jsonify(url=f"{raw_image}", endpoint="https://thino.pics/api/v1/feet",filename=choice, status=200)
+
 
 
 @app.route('/check', methods=['POST']) #this route is made to be checked with stuff like uptime kuma and other stuff 
 async def uptime_check():
-    return "Checked",200
+    if request.method == "POST":
+        return "Checked",200
 
-app.run(debug=True, port=2030)
